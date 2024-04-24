@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Vision_Inspection</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Camera\" />
+    <Folder Include="Model\Model data\" />
+    <Folder Include="Model\3D model data\" />
+    <Folder Include="Model\Steps data\" />
+    <Folder Include="Font\" />
+    <Folder Include="Bussiness logic\" />
+    <Folder Include="User controls\" />
+    <Folder Include="Image\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
+    <PackageReference Include="NetCore5.0.Microsoft.Expression.Drawing" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
