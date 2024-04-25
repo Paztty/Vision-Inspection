@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        xmlns:local="clr-namespace:Vision_Inspection"
+        xmlns:local="clr-namespace:Vision_Inspection" xmlns:view_model="clr-namespace:Vision_Inspection.View_Model" d:DataContext="{d:DesignInstance Type=view_model:MainViewModel}"
         mc:Ignorable="d"
         WindowStyle="None" AllowsTransparency="True" 
         WindowStartupLocation="CenterScreen"
@@ -16,6 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Border BorderThickness="0,0,0,2" Margin="0,0,0,-1" BorderBrush="{StaticResource BackgroundNormal}" Background="{StaticResource Background}"
                 MouseDown="Form_MouseLeftButtonDown"/>
@@ -91,35 +92,90 @@
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Border Background="{StaticResource LightBackground}">
+            <Border Background="{StaticResource LightBackground}" BorderThickness="0,0,2,0" BorderBrush="{StaticResource BackgroundNormal}">
                 <StackPanel>
-                    <RadioButton Template="{StaticResource MenuRadioButton}" Height="60"
+                    <RadioButton Template="{StaticResource MenuRadioButton}" Height="60" Command="{Binding SelectPage}" CommandParameter="{Binding Inspection}"
                                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                         <icon:BootstrapIcons Kind="House" Width="20" Height="20"/>
                     </RadioButton>
-                    <RadioButton Template="{StaticResource MenuRadioButton}" Height="60"
+                    <RadioButton Template="{StaticResource MenuRadioButton}" Height="60" Command="{Binding SelectPage}"
                                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                         <icon:BootstrapIcons Kind="Person" Width="20" Height="20"/>
                     </RadioButton>
-                    <RadioButton Template="{StaticResource MenuRadioButton}" Height="60"
+                    <RadioButton Template="{StaticResource MenuRadioButton}" Height="60" Command="{Binding SelectPage}" CommandParameter="{Binding Model}"
                                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                         <icon:BootstrapIcons Kind="Pencil" Width="20" Height="20"/>
                     </RadioButton>
-                    <RadioButton Template="{StaticResource MenuRadioButton}" Height="60"
+                    <RadioButton Template="{StaticResource MenuRadioButton}" Height="60" Command="{Binding SelectPage}" 
                                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                         <icon:BootstrapIcons Kind="Camera" Width="20" Height="20"/>
                     </RadioButton>
-                    <RadioButton Template="{StaticResource MenuRadioButton}" Height="60"
+                    <RadioButton Template="{StaticResource MenuRadioButton}" Height="60" Command="{Binding SelectPage}" 
                                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                         <icon:BootstrapIcons Kind="BarChart" Width="20" Height="20"/>
                     </RadioButton>
-                    
-                    <RadioButton Template="{StaticResource MenuRadioButton}" Height="60" VerticalAlignment="Bottom"
+
+                    <RadioButton Template="{StaticResource MenuRadioButton}" Height="60"  Command="{Binding SelectPage}" 
                                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                         <icon:BootstrapIcons Kind="Gear" Width="20" Height="20"/>
                     </RadioButton>
                 </StackPanel>
             </Border>
+            <ContentControl Content="{Binding Content}" Grid.Column="1"/>
         </Grid>
+        <Border Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="{StaticResource BackgroundNormal}" BorderThickness="0,2,0,0">
+            <DockPanel Margin="0" LastChildFill="True">
+                <Border Background="{StaticResource BackgroundSelected}" Padding="5" Width="34">
+                    <icon:PackIconBootstrapIcons Kind="Laptop" Foreground="{StaticResource Foreground}" VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center"/>
+                </Border>
+
+                <TextBlock VerticalAlignment="Center" Foreground="{StaticResource Foreground}" Margin="10,0">
+                    <Run Text="Vision Inspection Ver 1.0" FontSize="10"/>
+                </TextBlock>
+                <Border Padding="5" Width="34">
+                    <icon:PackIconBootstrapIcons Kind="Camera2" Foreground="{StaticResource Foreground}" VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center"/>
+                </Border>
+                <TextBlock VerticalAlignment="Center" Foreground="{StaticResource Foreground}" Margin="0,0">
+                    <Run Text="Logitech G905S" FontSize="10"/>
+                </TextBlock>
+                <Border Padding="5" Width="34" Margin="10,0,0,0">
+                    <icon:PackIconBootstrapIcons Kind="TerminalFill" Foreground="{StaticResource Foreground}" VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center"/>
+                </Border>
+                <TextBlock VerticalAlignment="Center" Foreground="{StaticResource Foreground}" Margin="0,0">
+                    <Run Text="COM23" FontSize="10"/>
+                </TextBlock>
+
+                <DockPanel Margin="10,0,10,0" HorizontalAlignment="Right">
+                    <icon:PackIconBootstrapIcons Kind="ListNested" Foreground="{StaticResource Foreground}" VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center"/>
+                    <TextBlock VerticalAlignment="Center" Foreground="{StaticResource Foreground}" Margin="10,0,20,0">
+                        <Run Text="Steps:" FontSize="10"/>
+                        <Run Text="128" FontSize="10"/>
+                        <Run Text="/" FontSize="10"/>
+                        <Run Text="1900" FontSize="10"/>
+                    </TextBlock>
+                    <icon:PackIconBootstrapIcons Kind="Image" Foreground="{StaticResource Foreground}" VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center"/>
+                    <TextBlock VerticalAlignment="Center" Foreground="{StaticResource Foreground}" Margin="10,0,20,0">
+                        <Run Text="Width:" FontSize="10"/>
+                        <Run Text="1920" FontSize="10"/>
+                        <Run Text=" " FontSize="10"/>
+                        <Run Text="Height:" FontSize="10"/>
+                        <Run Text="1080" FontSize="10"/>
+                    </TextBlock>
+                    <icon:PackIconBootstrapIcons Kind="Mouse3" Foreground="{StaticResource Foreground}" VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center"/>
+                    <TextBlock VerticalAlignment="Center" Foreground="{StaticResource Foreground}" Margin="10,0,0,0">
+                        <Run Text="X: " FontSize="10"/>
+                        <Run Text="1254" FontSize="10"/>
+                        <Run Text="X: " FontSize="10"/>
+                        <Run Text="45" FontSize="10"/>
+                    </TextBlock>
+                </DockPanel>
+            </DockPanel>
+        </Border>
     </Grid>
 </Window>

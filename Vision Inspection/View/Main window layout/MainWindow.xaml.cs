@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Vision_Inspection.View_Model;
 
 namespace Vision_Inspection
 {
@@ -17,9 +18,11 @@ namespace Vision_Inspection
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainViewModel ViewModel { get; set; } = new MainViewModel();
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = ViewModel;
         }
         private void Close_Click(object sender, MouseButtonEventArgs e)
         {
