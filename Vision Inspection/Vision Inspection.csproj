@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Camera\" />
     <Folder Include="Model\Model data\" />
     <Folder Include="Model\3D model data\" />
     <Folder Include="Font\" />
